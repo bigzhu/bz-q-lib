@@ -1,8 +1,11 @@
 var path = require('path')
+// let proxy_target = 'http://192.168.1.42:8888'
+// proxy_target = 'http://octopus.laway.cn'
 
 module.exports = {
   // Webpack aliases
   aliases: {
+    'bz-lib': path.resolve(__dirname, '../../bz-lib'),
     quasar: path.resolve(__dirname, '../node_modules/quasar-framework/'),
     src: path.resolve(__dirname, '../src'),
     assets: path.resolve(__dirname, '../src/assets'),
@@ -30,7 +33,7 @@ module.exports = {
     env: require('./dev.env'),
     cssSourceMap: true,
     // auto open browser or not
-    openBrowser: true,
+    openBrowser: false,
     publicPath: '/',
     port: 8080,
 
@@ -44,7 +47,24 @@ module.exports = {
     // Proxy your API if using any.
     // Also see /build/script.dev.js and search for "proxy api requests"
     // https://github.com/chimurai/http-proxy-middleware
-    proxyTable: {}
+    proxyTable: {
+      // '/api': {
+      //   target: proxy_target,
+      //   changeOrigin: true
+      // },
+      // '/case': {
+      //   target: proxy_target,
+      //   changeOrigin: true
+      // },
+      // '/node': {
+      //   target: proxy_target,
+      //   changeOrigin: true
+      // },
+      // '/customer': {
+      //   target: proxy_target,
+      //   changeOrigin: true
+      // }
+    }
   }
 }
 
