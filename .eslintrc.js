@@ -24,6 +24,9 @@ module.exports = {
   },
   // add your custom rules here
   'rules': {
+    "indent": 0,
+    "space-before-function-paren": [2, { "anonymous": "ignore", "named": "ignore", "asyncArrow": "ignore" }],
+    "camelcase": 0,
     // allow paren-less arrow functions
     'arrow-parens': 0,
     'one-var': 0,
@@ -34,6 +37,6 @@ module.exports = {
     'import/export': 2,
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
-    'brace-style': [2, 'stroustrup', { 'allowSingleLine': true }]
+    'brace-style': [2, '1tbs', { 'allowSingleLine': true }]
   }
 }
