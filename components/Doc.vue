@@ -1,5 +1,8 @@
 <template>
   <div class="layout-padding relative-position">
+    <BzTitle>
+      BzUploadFile 上传文件
+    </BzTitle>
     <BzUploadFile>
       <img src="https://cdn.jin10.com/board/1cc712b684fc01406c7f2f94d04cd197.gif">
     </BzUploadFile>
@@ -8,10 +11,14 @@
 
 <script>
   import BzUploadFile from './BzUploadFile'
+  import BzUploadImg from './BzUploadImg'
+  import BzTitle from './BzTitle'
   export default {
     props: [],
     components: {
-      BzUploadFile
+      BzUploadImg,
+      BzUploadFile,
+      BzTitle
     },
     computed: {},
     data: function() {

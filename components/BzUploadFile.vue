@@ -8,14 +8,11 @@
 <script>
   export default {
     props: {
-      done_call_back: {
-        type: Function
-      },
-      upload_url: {
+      upload_url: { // 上传的 url
         type: String,
         default: '/api_file_upload'
       },
-      accept: {
+      accept: { // 上传类型
         type: String,
         default: '*'
       }
@@ -46,7 +43,7 @@
         console.log(file)
         if (file) {
           fd.append('file', file)
-          return window.fetch(this.upload_url, {
+          return fetch(this.upload_url, {
               method: 'post',
               body: fd
             })
@@ -66,6 +63,7 @@
             })
             .catch(function(error) {
               console.log('Request failed', error)
+              throw error
             })
         }
       },

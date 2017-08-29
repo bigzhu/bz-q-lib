@@ -47,7 +47,8 @@ module.exports = {
     // https://github.com/chimurai/http-proxy-middleware
     proxyTable: {
       '/api_': {
-        target: 'https://follow.center',
+        // target: 'https://follow.center',
+        target: 'https://sale.gotosiam.com',
         changeOrigin: true
       }
     }
