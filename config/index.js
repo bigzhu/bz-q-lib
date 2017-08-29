@@ -1,6 +1,4 @@
 var path = require('path')
-// let proxy_target = 'http://192.168.1.42:8888'
-// proxy_target = 'http://octopus.laway.cn'
 
 module.exports = {
   // Webpack aliases
@@ -48,22 +46,10 @@ module.exports = {
     // Also see /build/script.dev.js and search for "proxy api requests"
     // https://github.com/chimurai/http-proxy-middleware
     proxyTable: {
-      // '/api': {
-      //   target: proxy_target,
-      //   changeOrigin: true
-      // },
-      // '/case': {
-      //   target: proxy_target,
-      //   changeOrigin: true
-      // },
-      // '/node': {
-      //   target: proxy_target,
-      //   changeOrigin: true
-      // },
-      // '/customer': {
-      //   target: proxy_target,
-      //   changeOrigin: true
-      // }
+      '/api_': {
+        target: 'https://follow.center',
+        changeOrigin: true
+      }
     }
   }
 }
