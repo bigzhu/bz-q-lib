@@ -6,6 +6,10 @@
     <BzUploadFile>
       <img src="https://cdn.jin10.com/board/1cc712b684fc01406c7f2f94d04cd197.gif">
     </BzUploadFile>
+    <BzTitle>
+      BzUploadImg 上传图片
+    </BzTitle>
+    <BzUploadImg v-model="img" alt="测试" />
   </div>
 </template>
 
@@ -22,7 +26,9 @@
     },
     computed: {},
     data: function() {
-      return {}
+      return {
+        img: ''
+      }
     },
     mounted: function() {
       this.$nextTick(function() {
