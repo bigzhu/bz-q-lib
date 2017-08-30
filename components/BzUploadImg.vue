@@ -5,7 +5,7 @@
     </div>
     <upload-file :upload_url="upload_url" @change_file="previewImg" accept="image/png, image/jpeg, image/gif" @upload_done="done" class="hidden">上传附件</upload-file>
     <a @click="changeImg" href="javascript:void(0)" data-content="">
-      <img :src="value||blank_img||default_picture" class="ui medium image" :alt="alt" />
+      <img :src="value||blank_img||default_picture" class="responsive" :alt="alt" />
       <q-inner-loading :visible="loading" />
     </a>
 
@@ -59,7 +59,7 @@
     mounted: function() {
       this.$nextTick(function() {
         this.img_input = this.$el.getElementsByTagName('input')[0]
-        this.pre_img = this.$el.getElementsByClassName('.image')[0]
+        this.pre_img = this.$el.getElementsByClassName('.responsive')[0]
       })
     },
     methods: {

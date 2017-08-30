@@ -1,25 +1,38 @@
 <template>
   <div class="layout-padding relative-position">
+
     <BzTitle>
-      BzUploadFile 上传文件
+      BzUploadImgMultiple 上传图片多张
     </BzTitle>
-    <BzUploadFile>
-      <img src="https://cdn.jin10.com/board/1cc712b684fc01406c7f2f94d04cd197.gif">
-    </BzUploadFile>
+    <BzUploadImgMultiple v-model="imgs" alt="测试" />
+
     <BzTitle>
       BzUploadImg 上传图片
     </BzTitle>
     <BzUploadImg v-model="img" alt="测试" />
+
+    <BzTitle>
+      BzUploadFile 上传文件
+    </BzTitle>
+    <BzUploadFile>
+      <q-btn>上传</q-btn>
+    </BzUploadFile>
   </div>
 </template>
 
 <script>
+  import BzUploadImgMultiple from './BzUploadImgMultiple'
   import BzUploadFile from './BzUploadFile'
   import BzUploadImg from './BzUploadImg'
   import BzTitle from './BzTitle'
+  import {
+    QBtn
+  } from 'quasar'
   export default {
     props: [],
     components: {
+      QBtn,
+      BzUploadImgMultiple,
       BzUploadImg,
       BzUploadFile,
       BzTitle
@@ -27,6 +40,7 @@
     computed: {},
     data: function() {
       return {
+        imgs: [],
         img: ''
       }
     },
