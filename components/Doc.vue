@@ -1,15 +1,20 @@
 <template>
   <div class="layout-padding relative-position">
-
+    <BzTitle>
+      BzUploadFileMultiple 上传多文件
+    </BzTitle>
+    <BzUploadFileMultiple v-model="files" upload_url="/api/file/upload/" alt="测试">
+      <q-btn>上传</q-btn>
+    </BzUploadFileMultiple>
     <BzTitle>
       BzUploadImgMultiple 上传图片多张
     </BzTitle>
-    <BzUploadImgMultiple v-model="imgs" alt="测试" />
+    <BzUploadImgMultiple v-model="imgs" upload_url="/api/file/upload/" alt="测试" />
 
     <BzTitle>
       BzUploadImg 上传图片
     </BzTitle>
-    <BzUploadImg v-model="img" alt="测试" upload_url="/api/file/upload/"/>
+    <BzUploadImg v-model="img" alt="测试" upload_url="/api/file/upload/" />
 
     <BzTitle>
       BzUploadFile 上传文件
@@ -21,6 +26,7 @@
 </template>
 
 <script>
+  import BzUploadFileMultiple from './BzUploadFileMultiple'
   import BzUploadImgMultiple from './BzUploadImgMultiple'
   import BzUploadFile from './BzUploadFile'
   import BzUploadImg from './BzUploadImg'
@@ -31,6 +37,7 @@
   export default {
     props: [],
     components: {
+      BzUploadFileMultiple,
       QBtn,
       BzUploadImgMultiple,
       BzUploadImg,

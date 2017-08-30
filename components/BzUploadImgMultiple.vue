@@ -1,7 +1,7 @@
 <template>
   <div>
-    <BzUploadImg v-for="v in value" v-model="v.src" :alt="v.alt"/>
-    <BzUploadImg v-model="new_img" @upload_done="addNew"/>
+    <BzUploadImg v-for="v in value" :key="v.src.url" :upload_url="upload_url" v-model="v.src.url" :alt="v.alt"/>
+    <BzUploadImg v-model="new_img"  :upload_url="upload_url" @upload_done="addNew"/>
   </div>
 </template>
 
@@ -20,6 +20,10 @@
       }
     },
     props: {
+      upload_url: {
+        type: String,
+        default: '/api_file_upload'
+      },
       value: {
         default: function () { return [] }
       }
