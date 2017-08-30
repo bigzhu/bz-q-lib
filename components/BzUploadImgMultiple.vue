@@ -1,6 +1,6 @@
 <template>
   <div>
-    <BzUploadImg v-for="v in value" :key="v.src.url" :upload_url="upload_url" v-model="v.src.url" :alt="v.alt"/>
+    <BzUploadImg v-for="v in value" :key="v.url" :upload_url="upload_url" v-model="v.url" :alt="v.name"/>
     <BzUploadImg v-model="new_img"  :upload_url="upload_url" @upload_done="addNew"/>
   </div>
 </template>
@@ -38,7 +38,7 @@
     },
     methods: {
       addNew: function (src, alt) {
-        this.value.push({src: src, alt: alt})
+        this.value.push(src)
         this.new_img = ''
       }
     }

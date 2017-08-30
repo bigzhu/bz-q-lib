@@ -82,7 +82,7 @@
       done: function(src, alt) {
         this.loading = false
         this.$emit('input', src.url)
-        this.$emit('upload_done', src, alt)
+        this.$emit('upload_done', src)
       }
     },
     computed: {}
