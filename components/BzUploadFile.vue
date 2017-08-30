@@ -54,17 +54,20 @@
               return response.json()
             })
             .then(function(data) {
-              if (data.error !== '0') {
-                console.log(self.upload_url + ' error: ' + data.error)
-                throw new Error(data.error)
-              }
-              self.$emit('upload_done', data.file_path, file.name)
+              // if (data.error !== '0') {
+              //   console.log(self.upload_url + ' error: ' + data.error)
+              //   throw new Error(data.error)
+              // }
+              let file_url = ''
+              if (data.urls) file_url = data.urls[0]
+              if (data.file_path) file_url = data.file_path
+              self.$emit('upload_done', file_url, file.name)
               return data
             })
-            .catch(function(error) {
-              console.log('Request failed', error)
-              throw error
-            })
+            // .catch(function(error) {
+            //   console.log('Request failed', error)
+            //   throw new Error(error)
+            // })
         }
       },
       click: function() {

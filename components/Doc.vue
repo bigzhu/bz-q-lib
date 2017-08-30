@@ -9,7 +9,7 @@
     <BzTitle>
       BzUploadImg 上传图片
     </BzTitle>
-    <BzUploadImg v-model="img" alt="测试" />
+    <BzUploadImg v-model="img" alt="测试" upload_url="/api/file/upload/"/>
 
     <BzTitle>
       BzUploadFile 上传文件

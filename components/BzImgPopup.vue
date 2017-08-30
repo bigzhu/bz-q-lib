@@ -5,61 +5,60 @@
     </a>
     <div class="ui basic modal image-popup">
       <div class="image content" style="justify-content:center;">
-        <img @load="showImagePopup" :src="img_path" class="image">
+        <img @load="showImagePopup" :src="src" class="image">
       </div>
     </div>
   </div>
 </template>
 
 <script>
+  // 图片弹出预览, 用于手机上查看图片
   export default {
-    props: ['value'],
-    components: {
-    },
+    props: ['src'],
+    components: {},
     computed: {
-      img_path () { return this.value },
-      display_close_icon: function () {
+      display_close_icon: function() {
         return this.hide_close_icon ? 'none' : 'block'
       }
     },
-    data: function () {
+    data: function() {
       return {
         hide_close_icon: true,
         popup: null
       }
     },
-    mounted: function () {
-      this.$nextTick(function () {
+    mounted: function() {
+      this.$nextTick(function() {
         // code that assumes this.$el is in-document
         this.popup = this.$el.getElementsByClassName('image-popup')[0]
         let self = this
-        this.popup.modal(
-          {
-            onShow: function () {
-              // 显示关闭按钮
-              self.showCloseIcon()
-            },
-            onHide: function () {
-              // 隐藏关闭按钮
-              self.hideCloseIcon()
-              // 发送事件, 要求父组件修改状态
-              self.$emit('input', '')
-            }})
+        this.popup.modal({
+          onShow: function() {
+            // 显示关闭按钮
+            self.showCloseIcon()
+          },
+          onHide: function() {
+            // 隐藏关闭按钮
+            self.hideCloseIcon()
+            // 发送事件, 要求父组件修改状态
+            self.$emit('input', '')
+          }
+        })
       })
     },
     methods: {
-      hidePopup: function () {
+      hidePopup: function() {
         this.popup.modal('hide')
       },
-      showImagePopup: function () {
-        if (this.img_path !== '') {
+      showImagePopup: function() {
+        if (this.src !== '') {
           this.popup.modal('show')
         }
       },
-      showCloseIcon: function () {
+      showCloseIcon: function() {
         this.hide_close_icon = false
       },
-      hideCloseIcon: function () {
+      hideCloseIcon: function() {
         this.hide_close_icon = true
       }
     }

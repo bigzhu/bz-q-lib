@@ -46,9 +46,16 @@ module.exports = {
     // Also see /build/script.dev.js and search for "proxy api requests"
     // https://github.com/chimurai/http-proxy-middleware
     proxyTable: {
-      '/api_': {
+      '/api': {
         // target: 'https://follow.center',
-        target: 'https://sale.gotosiam.com',
+        // target: 'https://sale.gotosiam.com',
+        target: 'http://192.168.1.42:8888',
+        changeOrigin: true
+      },
+      '/media': {
+        // target: 'https://follow.center',
+        // target: 'https://sale.gotosiam.com',
+        target: 'http://192.168.1.42:8888',
         changeOrigin: true
       }
     }
