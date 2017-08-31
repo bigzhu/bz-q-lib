@@ -1,24 +1,30 @@
 <template>
   <div class="layout-padding relative-position">
-    <BzTitle>
+    <Title>
+      Login 用户登录
+    </Title>
+    <Login @login="login" />
+
+    <Title>
       BzUploadFileMultiple 上传多文件
-    </BzTitle>
+    </Title>
     <BzUploadFileMultiple v-model="files" upload_url="/api/file/upload/" alt="测试">
       <q-btn>上传</q-btn>
     </BzUploadFileMultiple>
-    <BzTitle>
+
+    <Title>
       BzUploadImgMultiple 上传图片多张
-    </BzTitle>
+    </Title>
     <BzUploadImgMultiple v-model="imgs" upload_url="/api/file/upload/" alt="测试" />
 
-    <BzTitle>
+    <Title>
       BzUploadImg 上传图片
-    </BzTitle>
+    </Title>
     <BzUploadImg v-model="img" alt="测试" upload_url="/api/file/upload/" />
 
-    <BzTitle>
+    <Title>
       BzUploadFile 上传文件
-    </BzTitle>
+    </Title>
     <BzUploadFile>
       <q-btn>上传</q-btn>
     </BzUploadFile>
@@ -26,23 +32,25 @@
 </template>
 
 <script>
+  import Login from './Login'
   import BzUploadFileMultiple from './BzUploadFileMultiple'
   import BzUploadImgMultiple from './BzUploadImgMultiple'
   import BzUploadFile from './BzUploadFile'
   import BzUploadImg from './BzUploadImg'
-  import BzTitle from './BzTitle'
+  import Title from './Title'
   import {
     QBtn
   } from 'quasar'
   export default {
     props: [],
     components: {
+      Login,
       BzUploadFileMultiple,
       QBtn,
       BzUploadImgMultiple,
       BzUploadImg,
       BzUploadFile,
-      BzTitle
+      Title
     },
     computed: {},
     data: function() {
@@ -57,7 +65,11 @@
         // code that assumes this.$el is in-document
       })
     },
-    methods: {}
+    methods: {
+      login: function(user_name, password) {
+        alert(`user_name: ${user_name} \npassword: ${password}`)
+      }
+    }
   }
 </script>
 
