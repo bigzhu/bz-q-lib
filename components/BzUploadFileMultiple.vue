@@ -1,6 +1,6 @@
 <template>
   <div>
-    <q-item v-for="(v, index) in value">
+    <q-item v-for="(v, index) in value" :key="v.url">
       <q-item-main>
         <a :href="v.url" :key="v.url">{{v.name}}</a>
       </q-item-main>
