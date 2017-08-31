@@ -1,4 +1,7 @@
 var path = require('path')
+let proxy = 'http://192.168.1.42:8888'
+proxy = 'https://sale.gotosiam.com'
+proxy = 'http://octopus.laway.cn'
 
 module.exports = {
   // Webpack aliases
@@ -49,13 +52,13 @@ module.exports = {
       '/api': {
         // target: 'https://follow.center',
         // target: 'https://sale.gotosiam.com',
-        target: 'http://192.168.1.42:8888',
+        target: proxy,
         changeOrigin: true
       },
       '/media': {
         // target: 'https://follow.center',
         // target: 'https://sale.gotosiam.com',
-        target: 'http://192.168.1.42:8888',
+        target: proxy,
         changeOrigin: true
       }
     }

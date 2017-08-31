@@ -47,6 +47,7 @@
     computed: {},
     data: function() {
       return {
+        files: [],
         imgs: [],
         img: ''
       }

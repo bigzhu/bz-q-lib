@@ -23,11 +23,11 @@
   import BzUploadFile from './BzUploadFile'
   export default {
     watch: {
-      value: {
+      value: { // img 删除只是把 url 置为 '', 这里监听并更新列表, 剔除 url 为 '' 的
         handler: function(val, oldVal) {
-          let imgs = val.filter(item => item.src !== '')
-          if (val.length !== imgs.length) {
-            this.$emit('input', val.filter(item => item.src !== ''))
+          let files = val.filter(item => item.url !== '')
+          if (val.length !== files.length) {
+            this.$emit('input', files)
           }
         },
         deep: true
@@ -53,20 +53,18 @@
     },
     data: function() {
       return {
-        new_img: ''
       }
     },
     methods: {
       del: function(index) {
         this.value.splice(index, 1)
+        this.$emit('input', this.value)
       },
-      addNew: function(src, alt) {
+      addNew: function(url, name) {
         this.value.push({
-          url: src.url,
-          name: src.name,
-          alt: alt
+          url,
+          name
         })
-        this.new_img = ''
       }
     }
   }

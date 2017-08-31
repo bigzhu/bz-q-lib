@@ -1,6 +1,6 @@
 <template>
   <div>
-    <BzUploadImg v-for="v in value" :key="v.url" :upload_url="upload_url" v-model="v.url" :alt="v.name"/>
+    <BzUploadImg v-for="v in value" :key="v.url" :upload_url="upload_url" v-model="v.url" :alt="alt||v.name"/>
     <BzUploadImg v-model="new_img"  :upload_url="upload_url" @upload_done="addNew"/>
   </div>
 </template>
@@ -26,6 +26,10 @@
       },
       value: {
         default: function () { return [] }
+      },
+      alt: {
+        type: String,
+        default: ''
       }
     },
     components: {
@@ -37,8 +41,8 @@
       }
     },
     methods: {
-      addNew: function (src, alt) {
-        this.value.push(src)
+      addNew: function (url, name) {
+        this.value.push({url, name})
         this.new_img = ''
       }
     }

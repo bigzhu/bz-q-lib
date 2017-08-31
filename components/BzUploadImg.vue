@@ -79,10 +79,10 @@
           this.loading = true
         }
       },
-      done: function(src, alt) {
+      done: function(url, name) {
         this.loading = false
-        this.$emit('input', src.url)
-        this.$emit('upload_done', src)
+        this.$emit('input', url)
+        this.$emit('upload_done', url, name)
       }
     },
     computed: {}

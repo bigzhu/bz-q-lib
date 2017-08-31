@@ -1,5 +1,5 @@
 <template>
-  <div @click="click" class="ui button">
+  <div @click="click">
     <slot></slot>
     <input type="file" @change="changeFile" :accept="accept" style="display: none" />
   </div>
@@ -26,7 +26,6 @@
     mounted: function() {
       this.$nextTick(function() {
         this.file_input = this.$el.getElementsByTagName('input')[0]
-        console.log(this.file_input.files)
       })
     },
     methods: {
@@ -40,7 +39,6 @@
         fd = new window.FormData()
         let self = this
         file = this.file_input.files[0]
-        console.log(file)
         if (file) {
           fd.append('file', file)
           return fetch(this.upload_url, {
@@ -58,10 +56,10 @@
               //   console.log(self.upload_url + ' error: ' + data.error)
               //   throw new Error(data.error)
               // }
-              let file_url = ''
-              if (data.urls) file_url = data.urls[0]
-              if (data.file_path) file_url = data.file_path
-              self.$emit('upload_done', file_url, file.name)
+              let url = ''
+              if (data.urls) url = data.urls[0].url // 律品的返回格式, 只取 url
+              if (data.file_path) url = data.file_path // 以前的返回格式
+              self.$emit('upload_done', url, file.name)
               return data
             })
             // .catch(function(error) {
