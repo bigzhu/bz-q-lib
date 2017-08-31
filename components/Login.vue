@@ -31,9 +31,9 @@
     data: function() {
       return {
         user_name: '',
-        user_name_error: false,
+        user_name_error: '',
         password: '',
-        password_error: false
+        password_error: ''
       }
     },
     ready() {},
