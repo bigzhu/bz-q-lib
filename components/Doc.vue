@@ -1,5 +1,7 @@
 <template>
   <div class="layout-padding relative-position">
+
+    <q-datetime v-model="test" type="datetime" />
     <Title>
       Login 用户登录
     </Title>
@@ -39,11 +41,13 @@
   import BzUploadImg from './BzUploadImg'
   import Title from './Title'
   import {
+    QDatetime,
     QBtn
   } from 'quasar'
   export default {
     props: [],
     components: {
+      QDatetime,
       Login,
       BzUploadFileMultiple,
       QBtn,
@@ -55,6 +59,7 @@
     computed: {},
     data: function() {
       return {
+        test: '2017-09-24 00:00:00',
         files: [],
         imgs: [],
         img: ''
