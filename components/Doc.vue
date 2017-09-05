@@ -2,6 +2,7 @@
   <div class="layout-padding relative-position">
 
     <q-datetime v-model="test" type="datetime" />
+    <q-datetime v-model="test" type="datetime" />
     <Title>
       Login 用户登录
     </Title>
@@ -59,7 +60,7 @@
     computed: {},
     data: function() {
       return {
-        test: '2017-09-24 00:00:00',
+        test: '2017/09/24 00:30:00',
         files: [],
         imgs: [],
         img: ''
