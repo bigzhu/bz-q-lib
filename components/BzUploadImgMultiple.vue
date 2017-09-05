@@ -11,9 +11,9 @@
     watch: {
       value: {
         handler: function (val, oldVal) {
-          let imgs = val.filter(item => item.src !== '')
+          let imgs = val.filter(o => o.url !== '')
           if (val.length !== imgs.length) {
-            this.$emit('input', val.filter(item => item.src !== ''))
+            this.$emit('input', imgs)
           }
         },
         deep: true
