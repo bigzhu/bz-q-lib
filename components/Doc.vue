@@ -1,8 +1,15 @@
 <template>
   <div class="layout-padding relative-position">
+    <Title>
+      BzFab 文字菜单按钮
+    </Title>
+    <BzFab content="文字" color="" icon="" activeIcon="" direction="left">
+      <q-fab-action color="" @click="updateLast" icon="whatshot">
+        <q-tooltip anchor="center left" self="center right" :offset="[20, 0]">清空未读!</q-tooltip>
+      </q-fab-action>
+    </BzFab>
 
-    <q-datetime v-model="test" type="datetime" />
-    <q-datetime v-model="test" type="datetime" />
+    <Login @login="login" />
     <Title>
       Login 用户登录
     </Title>
@@ -36,19 +43,23 @@
 
 <script>
   import Login from './Login'
+  import BzFab from './BzFab'
   import BzUploadFileMultiple from './BzUploadFileMultiple'
   import BzUploadImgMultiple from './BzUploadImgMultiple'
   import BzUploadFile from './BzUploadFile'
   import BzUploadImg from './BzUploadImg'
   import Title from './Title'
   import {
-    QDatetime,
+    QTooltip,
+    QFabAction,
     QBtn
   } from 'quasar'
   export default {
     props: [],
     components: {
-      QDatetime,
+      QTooltip,
+      QFabAction,
+      BzFab,
       Login,
       BzUploadFileMultiple,
       QBtn,
