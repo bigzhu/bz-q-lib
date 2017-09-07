@@ -3,7 +3,7 @@
     <div v-show="loading" class="ui large active loader">
       <div class="ui text loader">上传图片中</div>
     </div>
-    <upload-file :upload_url="upload_url" @change_file="previewImg" accept="image/png, image/jpeg, image/gif" @upload_done="done" class="hidden">上传附件</upload-file>
+    <upload-file :zip="zip" :upload_url="upload_url" @change_file="previewImg" accept="image/png, image/jpeg, image/gif" @upload_done="done" class="hidden">上传附件</upload-file>
     <a @click="changeImg" href="javascript:void(0)" data-content="">
       <img :src="value||blank_img||default_picture" class="responsive" :alt="alt" />
       <q-inner-loading :visible="loading" />
@@ -25,6 +25,10 @@
   import upload_picture from '../assets/upload-picture.svg'
   export default {
     props: {
+      zip: { // 是否压缩图片
+        type: Boolean,
+        default: true
+      },
       upload_url: {
         type: String,
         default: '/api_file_upload'
