@@ -20,7 +20,7 @@
     props: {
       button_color: {
         type: String,
-        default: 'secondary'
+        default: 'primary'
       }
     },
     components: {

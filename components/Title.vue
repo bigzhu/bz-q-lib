@@ -27,4 +27,9 @@
 </script>
 
 <style lang="stylus" scoped>
+  .q-alert-container
+    margin-top 1rem
+    margin-bottom 1rem
+    margin-left -4rem
+    margin-right -4rem
 </style>

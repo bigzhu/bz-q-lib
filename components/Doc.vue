@@ -1,5 +1,5 @@
 <template>
-  <div class="layout-padding relative-position">
+  <div class="layout-padding ">
     <Title>
       BzFab 文字菜单按钮
     </Title>
@@ -9,7 +9,6 @@
       </q-fab-action>
     </BzFab>
 
-    <Login @login="login" />
     <Title>
       Login 用户登录
     </Title>
