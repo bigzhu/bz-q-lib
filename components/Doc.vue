@@ -1,39 +1,39 @@
 <template>
-  <div class="layout-padding ">
-    <Title>
+  <div class="layout-padding relative-position">
+    <BzTitle>
       BzFab 文字菜单按钮
-    </Title>
+    </BzTitle>
     <BzFab content="文字" color="" icon="" activeIcon="" direction="left">
-      <q-fab-action color="" @click="updateLast" icon="whatshot">
+      <q-fab-action color="" icon="whatshot">
         <q-tooltip anchor="center left" self="center right" :offset="[20, 0]">清空未读!</q-tooltip>
       </q-fab-action>
     </BzFab>
 
-    <Title>
+    <BzTitle>
       Login 用户登录
-    </Title>
+    </BzTitle>
     <Login @login="login" />
 
-    <Title>
+    <BzTitle>
       BzUploadFileMultiple 上传多文件
-    </Title>
+    </BzTitle>
     <BzUploadFileMultiple v-model="files" upload_url="/api/file/upload/" alt="测试">
       <q-btn>上传</q-btn>
     </BzUploadFileMultiple>
 
-    <Title>
+    <BzTitle>
       BzUploadImgMultiple 上传图片多张
-    </Title>
+    </BzTitle>
     <BzUploadImgMultiple v-model="imgs" upload_url="/api/file/upload/" alt="测试" />
 
-    <Title>
+    <BzTitle>
       BzUploadImg 上传图片
-    </Title>
+    </BzTitle>
     <BzUploadImg v-model="img" alt="测试" upload_url="/api/file/upload/" />
 
-    <Title>
+    <BzTitle>
       BzUploadFile 上传文件
-    </Title>
+    </BzTitle>
     <BzUploadFile>
       <q-btn>上传</q-btn>
     </BzUploadFile>
@@ -47,7 +47,7 @@
   import BzUploadImgMultiple from './BzUploadImgMultiple'
   import BzUploadFile from './BzUploadFile'
   import BzUploadImg from './BzUploadImg'
-  import Title from './Title'
+  import BzTitle from './BzTitle'
   import {
     QTooltip,
     QFabAction,
@@ -65,7 +65,7 @@
       BzUploadImgMultiple,
       BzUploadImg,
       BzUploadFile,
-      Title
+      BzTitle
     },
     computed: {},
     data: function() {
