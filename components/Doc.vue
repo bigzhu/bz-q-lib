@@ -1,6 +1,11 @@
 <template>
   <div class="layout-padding relative-position">
     <BzTitle>
+      LinkBtn 直接挂link的button
+    </BzTitle>
+    <LinkBtn href="https://follow.center">follow center</LinkBtn>
+
+    <BzTitle>
       BzFab 文字菜单按钮
     </BzTitle>
     <BzFab content="文字" color="" icon="" activeIcon="" direction="left">
@@ -41,6 +46,8 @@
 </template>
 
 <script>
+  import Oauth from './Oauth'
+  import LinkBtn from './LinkBtn'
   import Login from './Login'
   import BzFab from './BzFab'
   import BzUploadFileMultiple from './BzUploadFileMultiple'
@@ -56,6 +63,8 @@
   export default {
     props: [],
     components: {
+      Oauth,
+      LinkBtn,
       QTooltip,
       QFabAction,
       BzFab,
