@@ -1,9 +1,15 @@
 <template>
   <div class="layout-padding relative-position">
     <BzTitle>
+      Oauth 和当前的时间间隔
+    </BzTitle>
+    <TimeLen date_time="2012/04/03 09:21:34" />
+
+    <BzTitle>
       Oauth Oauth 按钮
     </BzTitle>
     <Oauth/>
+
     <BzTitle>
       LinkBtn 直接挂link的button
     </BzTitle>
@@ -50,15 +56,7 @@
 </template>
 
 <script>
-  import Oauth from './Oauth'
-  import LinkBtn from './LinkBtn'
-  import Login from './Login'
-  import BzFab from './BzFab'
-  import BzUploadFileMultiple from './BzUploadFileMultiple'
-  import BzUploadImgMultiple from './BzUploadImgMultiple'
-  import BzUploadFile from './BzUploadFile'
-  import BzUploadImg from './BzUploadImg'
-  import BzTitle from './BzTitle'
+  import loadComponents from '../functions/loadComponents'
   import {
     QTooltip,
     QFabAction,
@@ -66,20 +64,11 @@
   } from 'quasar'
   export default {
     props: [],
-    components: {
-      Oauth,
-      LinkBtn,
-      QTooltip,
-      QFabAction,
-      BzFab,
-      Login,
-      BzUploadFileMultiple,
+    components: Object.assign({}, loadComponents(), {
       QBtn,
-      BzUploadImgMultiple,
-      BzUploadImg,
-      BzUploadFile,
-      BzTitle
-    },
+      QFabAction,
+      QTooltip
+    }),
     computed: {},
     data: function() {
       return {
