@@ -1,6 +1,10 @@
 <template>
   <div class="layout-padding relative-position">
     <BzTitle>
+      Oauth Oauth 按钮
+    </BzTitle>
+    <Oauth/>
+    <BzTitle>
       LinkBtn 直接挂link的button
     </BzTitle>
     <LinkBtn href="https://follow.center">follow center</LinkBtn>
