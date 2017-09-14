@@ -1,6 +1,6 @@
 <template>
   <div>
-    <LinkBtn v-for="o in oauths" :href="getHref(o)" :icon="'fa-'+o.type" :color="o.type" :no-caps="true">{{getName(o)}}</LinkBtn>
+    <LinkBtn v-for="o in oauths" :key="o.type" :href="getHref(o)" :icon="'fa-'+o.type" :color="o.type" :no-caps="true">{{getName(o)}}</LinkBtn>
   </div>
 </template>
 
@@ -17,7 +17,8 @@
           return [{
               type: 'github'
             }, {
-              type: 'twitter'
+              type: 'twitter',
+              url: '/fuck/api_twitter'
             }, {
               type: 'facebook'
             },
