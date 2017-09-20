@@ -6,7 +6,7 @@ proxy = 'http://octopus.laway.cn'
 module.exports = {
   // Webpack aliases
   aliases: {
-    'bz-lib': path.resolve(__dirname, '../../bz-lib'),
+    // 'bz-lib': path.resolve(__dirname, '../../bz-lib'),
     quasar: path.resolve(__dirname, '../node_modules/quasar-framework/'),
     src: path.resolve(__dirname, '../src'),
     assets: path.resolve(__dirname, '../src/assets'),

@@ -11,8 +11,12 @@ require(`quasar/dist/quasar.${__THEME}.css`)
 // require(`quasar/dist/quasar.ie.${__THEME}.css`)
 
 import Vue from 'vue'
+
 import Quasar from 'quasar'
 import router from './router'
+
+import errorToast from './functions/errorToast'
+errorToast()
 
 Vue.config.productionTip = false
 Vue.use(Quasar) // Install Quasar Framework

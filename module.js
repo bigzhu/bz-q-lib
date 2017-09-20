@@ -2,6 +2,7 @@
 import 'whatwg-fetch'
 import _ from 'lodash'
 import checkLogin from './functions/checkLogin'
+import toast from './functions/toast'
 
 var fetch
 fetch = global.window.fetch
@@ -31,16 +32,16 @@ export const state = {
 }
 // mutations
 export const mutations = {
-  CHECK_LOGIN (state) {
+  CHECK_LOGIN(state) {
     state.is_login = checkLogin()
   },
-  SET_SITE (state, site) {
+  SET_SITE(state, site) {
     state.site = site
   },
-  SET_INFO (state, info) {
+  SET_INFO(state, info) {
     state.info = info
   },
-  SET_SHORT_LIFE_INFO (state, info, time = 1000) {
+  SET_SHORT_LIFE_INFO(state, info, time = 1000) {
     state.info = info
     setTimeout(
       () => {
@@ -48,20 +49,20 @@ export const mutations = {
       }, time
     )
   },
-  CLEAN_RICH_TEXT (state) {
+  CLEAN_RICH_TEXT(state) {
     state.rich_text = {}
   },
-  SET_RICH_TEXT (state, rich_text) {
+  SET_RICH_TEXT(state, rich_text) {
     state.rich_text = rich_text
   },
-  SET_RICH_LIST (state, rich_list) {
+  SET_RICH_LIST(state, rich_list) {
     state.rich_list = _.unionBy(state.rich_list, rich_list, 'id')
     // state.rich_list = rich_list
   },
-  SET_USER_INFO (state, user_info) {
+  SET_USER_INFO(state, user_info) {
     state.user_info = user_info
   },
-  SET_LOADING (state, loading) {
+  SET_LOADING(state, loading) {
     // 加入计数器
     if (loading) {
       state.loading_count += 1
@@ -73,10 +74,10 @@ export const mutations = {
       state.loading = false
     }
   },
-  SET_ERROR_INFO (state, error_info) {
+  SET_ERROR_INFO(state, error_info) {
     state.error_info = error_info
   },
-  SET_SHORT_LIFE_ERROR_INFO (state, error_info, time = 1000) {
+  SET_SHORT_LIFE_ERROR_INFO(state, error_info, time = 1000) {
     state.error_info = error_info
     setTimeout(
       () => {
@@ -87,13 +88,20 @@ export const mutations = {
 }
 // actions
 export const actions = {
-  getOper ({ state, commit, dispatch }, name) { // 根据名字来操作
-    return dispatch('get', '/api_' + name).then(function (data) {
+  getOper({
+    state,
+    commit,
+    dispatch
+  }, name) { // 根据名字来操作
+    return dispatch('get', '/api_' + name).then(function(data) {
       state[name + 's'] = data.datas
       return data
     })
   },
-  get ({ state, commit }, val) {
+  get({
+    state,
+    commit
+  }, val) {
     let url = ''
     let loading = true
     let hide_error = false
@@ -112,141 +120,192 @@ export const actions = {
     if (state.site) url = state.site + url
     // console.log(url)
 
-    if (loading === true || loading === undefined) { commit('SET_LOADING', true) }
+    if (loading === true || loading === undefined) {
+      commit('SET_LOADING', true)
+    }
     return fetch(url, {
-      credentials: 'same-origin',
-      method: 'get',
-      headers: {
-        'pragma': 'no-cache',
-        'cache-control': 'no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0',
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(function (response) {
-      if (loading === true || loading === undefined) { commit('SET_LOADING', false) }
-      return response
-    }).then(function (response) {
-      if (response.status !== 200) {
-        throw new Error(response.url + ' ' + response.status + ' ' + response.statusText)
-      }
-      return response.json()
-    }).then(function (data) {
-      if (data.error !== '0' && !hide_error) {
-        commit('SET_ERROR_INFO', data.error)
-        console.log(url + ' error: ' + data.error)
-        throw new Error(data.error)
-      }
-      return data
-    })
+        credentials: 'same-origin',
+        method: 'get',
+        headers: {
+          'pragma': 'no-cache',
+          'cache-control': 'no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0',
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(function(response) {
+        if (loading === true || loading === undefined) {
+          commit('SET_LOADING', false)
+        }
+        return response
+      }).then(function(response) {
+        if (response.status !== 200) {
+          throw new Error(response.url + ' ' + response.status + ' ' + response.statusText)
+        }
+        return response.json()
+      }).then(function(data) {
+        if (data.error !== '0' && !hide_error) {
+          commit('SET_ERROR_INFO', data.error)
+          throw new Error(data.error)
+        }
+        return data
+      }).catch(function(error) {
+        toast(error.message, 'warning')
+      })
   },
-  post ({ state, commit }, {url, body, no_throw, loading}) {
-    if (loading === true || loading === undefined) { commit('SET_LOADING', true) }
+  post({
+    state,
+    commit
+  }, {
+    url,
+    body,
+    no_throw,
+    loading
+  }) {
+    if (loading === true || loading === undefined) {
+      commit('SET_LOADING', true)
+    }
     return fetch(url, {
-      credentials: 'same-origin',
-      method: 'post',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(body)
-    })
-    .then(function (response) {
-      if (loading === true || loading === undefined) { commit('SET_LOADING', false) }
-      return response
-    }).then(function (response) {
-      if (response.status !== 200) {
-        throw new Error(response.url + ' ' + response.status + ' ' + response.statusText)
-      }
-      return response.json()
-    }).then(function (data) {
-      if (data.error !== '0' && !no_throw) {
-        commit('SET_ERROR_INFO', data.error)
-        console.log(url + ' error: ' + data.error)
-        throw new Error(data.error)
-      }
-      return data
-    })
+        credentials: 'same-origin',
+        method: 'post',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+      })
+      .then(function(response) {
+        if (loading === true || loading === undefined) {
+          commit('SET_LOADING', false)
+        }
+        return response
+      }).then(function(response) {
+        if (response.status !== 200) {
+          throw new Error(response.url + ' ' + response.status + ' ' + response.statusText)
+        }
+        return response.json()
+      }).then(function(data) {
+        if (data.error !== '0' && !no_throw) {
+          commit('SET_ERROR_INFO', data.error)
+          console.log(url + ' error: ' + data.error)
+          throw new Error(data.error)
+        }
+        return data
+      }).catch(function(error) {
+        toast(error.message, 'warning')
+      })
   },
-  delete ({ state, commit }, url) {
+  delete({
+    state,
+    commit
+  }, url) {
     commit('SET_LOADING', true)
     return fetch(url, {
-      credentials: 'same-origin',
-      method: 'delete',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(function (response) {
-      commit('SET_LOADING', false)
-      return response
-    }).then(function (response) {
-      if (response.status !== 200) {
-        throw new Error(response.url + ' ' + response.status + ' ' + response.statusText)
-      }
-      return response.json()
-    }).then(function (data) {
-      if (data.error !== '0') {
-        commit('SET_ERROR_INFO', data.error)
-        console.log(url + ' error: ' + data.error)
-      }
-      return data
-    })
+        credentials: 'same-origin',
+        method: 'delete',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(function(response) {
+        commit('SET_LOADING', false)
+        return response
+      }).then(function(response) {
+        if (response.status !== 200) {
+          throw new Error(response.url + ' ' + response.status + ' ' + response.statusText)
+        }
+        return response.json()
+      }).then(function(data) {
+        if (data.error !== '0') {
+          commit('SET_ERROR_INFO', data.error)
+          console.log(url + ' error: ' + data.error)
+        }
+        return data
+      }).catch(function(error) {
+        toast(error.message, 'warning')
+      })
   },
-  put ({ state, commit }, {url, body, loading}) {
-    if (loading === true || loading === undefined) { commit('SET_LOADING', true) }
+  put({
+    state,
+    commit
+  }, {
+    url,
+    body,
+    loading
+  }) {
+    if (loading === true || loading === undefined) {
+      commit('SET_LOADING', true)
+    }
     return fetch(url, {
-      credentials: 'same-origin',
-      method: 'put',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(body)
-    })
-    .then(function (response) {
-      if (loading === true || loading === undefined) { commit('SET_LOADING', false) }
-      return response
-    }).then(function (response) {
-      if (response.status !== 200) {
-        throw new Error(response.url + ' ' + response.status + ' ' + response.statusText)
-      }
-      return response.json()
-    }).then(function (data) {
-      if (data.error !== '0') {
-        commit('SET_ERROR_INFO', data.error)
-        console.log(url + ' error: ' + data.error)
-        throw new Error(data.error)
-      }
-      return data
-    })
+        credentials: 'same-origin',
+        method: 'put',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+      })
+      .then(function(response) {
+        if (loading === true || loading === undefined) {
+          commit('SET_LOADING', false)
+        }
+        return response
+      }).then(function(response) {
+        if (response.status !== 200) {
+          throw new Error(response.url + ' ' + response.status + ' ' + response.statusText)
+        }
+        return response.json()
+      }).then(function(data) {
+        if (data.error !== '0') {
+          commit('SET_ERROR_INFO', data.error)
+          console.log(url + ' error: ' + data.error)
+          throw new Error(data.error)
+        }
+        return data
+      }).catch(function(error) {
+        toast(error.message, 'warning')
+      })
   },
-  login ({ state, commit, dispatch }, {user_name, password}) {
+  login({
+    state,
+    commit,
+    dispatch
+  }, {
+    user_name,
+    password
+  }) {
     let parm = {}
     parm.user_name = user_name
     parm.password = password
-    return dispatch('post', {url: '/api_login', body: parm})
+    return dispatch('post', {
+      url: '/api_login',
+      body: parm
+    })
   },
-  signup ({ state, commit }, user_name, password, email, done = null, error = null) {
+  signup({
+    state,
+    commit
+  }, user_name, password, email, done = null, error = null) {
     let parm = {}
     parm.user_name = user_name
     parm.password = password
     parm.email = email
 
     fetch('/api_signup', {
-      credentials: 'same-origin',
-      method: 'post',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(parm)})
-      .then(function (response) {
+        credentials: 'same-origin',
+        method: 'post',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(parm)
+      })
+      .then(function(response) {
         return response
-      }).then(function (response) {
+      }).then(function(response) {
         return response.json()
-      }).then(function (data) {
+      }).then(function(data) {
         if (data.error !== '0') {
           throw new Error(data.error)
         }
@@ -255,34 +314,64 @@ export const actions = {
         }
       })
   },
-  getOauthInfo ({ state, commit, dispatch }) {
-    return dispatch('get', {url: '/api_oauth_info', hide_error: true}).then(function (data) {
+  getOauthInfo({
+    state,
+    commit,
+    dispatch
+  }) {
+    return dispatch('get', {
+      url: '/api_oauth_info',
+      hide_error: true
+    }).then(function(data) {
       if (data.datas) {
         state.oauth_info = data.datas
       }
       return data
     })
   },
-  getUserInfo ({ state, commit, dispatch }) {
-    return dispatch('get', {url: '/api_user_info', hide_error: true}).then(function (data) {
+  getUserInfo({
+    state,
+    commit,
+    dispatch
+  }) {
+    return dispatch('get', {
+      url: '/api_user_info',
+      hide_error: true
+    }).then(function(data) {
       if (data.user_info) {
         commit('SET_USER_INFO', data.user_info)
       }
     })
   },
-  getRichList ({ state, commit, dispatch }, full_url) {
-    let parm = {'all': 1}
+  getRichList({
+    state,
+    commit,
+    dispatch
+  }, full_url) {
+    let parm = {
+      'all': 1
+    }
     let url = '/api_rich_text'
 
-    return dispatch('get', {url: url, body: parm}).then(function (data) {
+    return dispatch('get', {
+      url: url,
+      body: parm
+    }).then(function(data) {
       commit('SET_RICH_LIST', data.rich_text)
       return data
     })
   },
-  getRichText ({ state, commit, dispatch }, parm) {
+  getRichText({
+    state,
+    commit,
+    dispatch
+  }, parm) {
     // id or key
     let url = '/api_rich_text'
-    return dispatch('get', {url: url, body: parm}).then(function (data) {
+    return dispatch('get', {
+      url: url,
+      body: parm
+    }).then(function(data) {
       commit('SET_RICH_TEXT', data.rich_text[0])
       return data
     })
@@ -290,8 +379,7 @@ export const actions = {
 }
 
 // getters
-export const getters = {
-}
+export const getters = {}
 
 export default {
   state,
