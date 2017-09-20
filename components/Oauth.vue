@@ -1,10 +1,16 @@
 <template>
   <div>
-    <LinkBtn v-for="o in oauths" :key="o.type" :href="getHref(o)" :icon="'fa-'+o.type" :color="o.type" :no-caps="true">{{getName(o)}}</LinkBtn>
+    <LinkBtn loader v-for="o in oauths" :key="o.type" :href="getHref(o)" :icon="'fa-'+o.type" :color="o.type" :no-caps="true">
+      <q-spinner-facebook slot="loading"/>
+      {{getName(o)}}
+    </LinkBtn>
   </div>
 </template>
 
 <script>
+  import {
+    QSpinnerFacebook
+  } from 'quasar'
   import 'quasar-extras/fontawesome'
   import LinkBtn from './LinkBtn'
   export default {
@@ -30,6 +36,7 @@
       }
     },
     components: {
+      QSpinnerFacebook,
       LinkBtn
     },
     computed: {},

@@ -13,7 +13,9 @@
     <BzTitle>
       LinkBtn 直接挂link的button
     </BzTitle>
-    <LinkBtn href="https://follow.center">follow center</LinkBtn>
+    <LinkBtn loader href="https://follow.center">follow center
+      <q-spinner-facebook slot="loading" size="20px" />
+    </LinkBtn>
 
     <BzTitle>
       BzFab 文字菜单按钮
@@ -58,6 +60,8 @@
 <script>
   import loadComponents from '../functions/loadComponents'
   import {
+    QSpinnerFacebook,
+    QSpinnerOval,
     QTooltip,
     QFabAction,
     QBtn
@@ -65,6 +69,8 @@
   export default {
     props: [],
     components: Object.assign({}, loadComponents(), {
+      QSpinnerFacebook,
+      QSpinnerOval,
       QBtn,
       QFabAction,
       QTooltip
