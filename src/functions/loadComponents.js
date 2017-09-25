@@ -6,6 +6,7 @@ function load(component) {
 
 export default function() {
   let names = [
+      'BzRouteTab',
       'TimeLen',
       'Oauth',
       'LinkBtn',
