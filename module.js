@@ -3,6 +3,7 @@ import 'whatwg-fetch'
 import _ from 'lodash'
 import checkLogin from './functions/checkLogin'
 import toast from './functions/toast'
+import axios from 'axios'
 
 var fetch
 fetch = global.window.fetch
@@ -319,15 +320,19 @@ export const actions = {
     commit,
     dispatch
   }) {
-    return dispatch('get', {
-      url: '/api_oauth_info',
-      hide_error: true
-    }).then(function(data) {
-      if (data.datas) {
-        state.oauth_info = data.datas
-      }
-      return data
-    })
+    axios.get('/api_oauth_info')
+      .then(function(response) {
+        let data = response.data
+        if (!data.error) {
+          state.oauth_info = data
+          return data
+        } else {
+          console.log(response)
+        }
+      })
+      .catch(function(error) {
+        console.log(error)
+      })
   },
   getUserInfo({
     state,
