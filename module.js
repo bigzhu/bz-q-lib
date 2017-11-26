@@ -276,13 +276,15 @@ export const actions = {
     user_name,
     password
   }) {
-    let parm = {}
-    parm.user_name = user_name
-    parm.password = password
-    return dispatch('post', {
-      url: '/api_login',
-      body: parm
-    })
+    let params = {}
+    params.user_name = user_name
+    params.password = password
+    axios.post('/api_oauth_info', params)
+      .then(function(response) {
+      })
+      .catch(function(error) {
+        console.log(error)
+      })
   },
   signup({
     state,
