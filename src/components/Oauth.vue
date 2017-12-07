@@ -1,8 +1,7 @@
 <template>
   <div>
     <LinkBtn loader v-for="o in oauths" :key="o.type" :href="getHref(o)" :icon="'fa-'+o.type" :color="o.type" :no-caps="true">
-      <q-spinner-facebook slot="loading"/>
-      {{getName(o)}}
+      <q-spinner-facebook slot="loading" /> {{getName(o)}}
     </LinkBtn>
   </div>
 </template>
@@ -64,9 +63,13 @@
           return 'javascript:void(0);'
         }
         if (this.url) {
-          return this.url + '/api_' + oauth.type
+          let url = this.url + '/api_' + oauth.type
+          if (oauth.type === 'qq') url += '_login'
+          return url
         } else {
-          return '/api_' + oauth.type
+          let url = '/api_' + oauth.type
+          if (oauth.type === 'qq') url += '_login'
+          return url
         }
       }
     }

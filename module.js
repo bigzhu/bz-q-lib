@@ -279,7 +279,7 @@ export const actions = {
     let params = {}
     params.user_name = user_name
     params.password = password
-    axios.post('/api_oauth_info', params)
+    axios.post('/api_login', params)
       .then(function(response) {
       })
       .catch(function(error) {
