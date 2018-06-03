@@ -1,6 +1,16 @@
 <template>
   <div class="layout-padding relative-position">
     <BzTitle>
+      BzCountUp 递次增加的数字
+    </BzTitle>
+    <BzCountUp :end="1000" :duration="2.5" :options="{useEasing : true,
+      useGrouping : true,
+      separator : ',',
+      decimal : '.',
+      prefix : '',
+      suffix : ''}"/>
+
+    <BzTitle>
       BzRouteTab 可以指定哪些 route name tab 高亮
     </BzTitle>
     <q-tabs color="secondary">
@@ -75,6 +85,7 @@
 
 <script>
   // import loadComponents from '../functions/loadComponents'
+  import BzCountUp from './BzCountUp'
   import BzRouteTab from './BzRouteTab'
   import TimeLen from './TimeLen'
   import Oauth from './Oauth'
@@ -89,6 +100,7 @@
   export default {
     props: [],
     components: {
+      BzCountUp,
       BzRouteTab,
       TimeLen,
       Oauth,
