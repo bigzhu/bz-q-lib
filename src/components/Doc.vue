@@ -3,7 +3,6 @@
     <BzTitle>
       BzRouteTab 可以指定哪些 route name tab 高亮
     </BzTitle>
-    <!--
     <q-tabs color="secondary">
       <BzRouteTab :names="['test', 'test2']" slot="title" :to="{'name': 'CustTypes'}" replace label="客户1" />
       <BzRouteTab :names="['test', 'test2']" slot="title" :to="{'name': 'CustTypes'}" replace label="客户2" />
@@ -18,7 +17,7 @@
     </q-btn>
 
     <BzTitle>
-      Oauth 和当前的时间间隔
+      TimeLen 和当前的时间间隔
     </BzTitle>
     <TimeLen date_time="2012/04/03 09:21:34" />
 
@@ -71,7 +70,6 @@
     <BzUploadFile>
       <q-btn>上传</q-btn>
     </BzUploadFile>
-    -->
   </div>
 </template>
 
