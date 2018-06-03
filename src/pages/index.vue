@@ -1,6 +1,6 @@
 <template>
   <q-page class="flex flex-center">
-    <img alt="Quasar logo" src="~assets/quasar-logo-full.svg">
+    <Doc/>
   </q-page>
 </template>
 
@@ -8,7 +8,11 @@
 </style>
 
 <script>
+import Doc from '../components/Doc'
 export default {
+  components: {
+    Doc
+  },
   name: 'PageIndex'
 }
 </script>

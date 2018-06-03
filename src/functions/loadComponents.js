@@ -10,8 +10,6 @@ export default function() {
       'TimeLen',
       'Oauth',
       'LinkBtn',
-      'QTooltip',
-      'QFabAction',
       'BzFab',
       'Login',
       'BzUploadFileMultiple',
