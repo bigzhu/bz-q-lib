@@ -17,7 +17,7 @@
     </q-btn>
 
     <BzTitle>
-      Oauth 和当前的时间间隔
+      TimeLen 和当前的时间间隔
     </BzTitle>
     <TimeLen date_time="2012/04/03 09:21:34" />
 
@@ -74,33 +74,33 @@
 </template>
 
 <script>
-  import loadComponents from '../functions/loadComponents'
-  import module from '../../module'
-  import Vue from 'vue'
-  import Vuex from 'vuex'
-  Vue.use(Vuex)
-  let store = new Vuex.Store(module)
-  import {
-    QRouteTab,
-    QTabs,
-    QSpinnerFacebook,
-    QSpinnerOval,
-    QTooltip,
-    QFabAction,
-    QBtn
-  } from 'quasar'
+  // import loadComponents from '../functions/loadComponents'
+  import BzRouteTab from './BzRouteTab'
+  import TimeLen from './TimeLen'
+  import Oauth from './Oauth'
+  import LinkBtn from './LinkBtn'
+  import BzFab from './BzFab'
+  import Login from './Login'
+  import BzUploadFileMultiple from './BzUploadFileMultiple'
+  import BzUploadImgMultiple from './BzUploadImgMultiple'
+  import BzUploadImg from './BzUploadImg'
+  import BzUploadFile from './BzUploadFile'
+  import BzTitle from './BzTitle'
   export default {
-    store,
     props: [],
-    components: Object.assign({}, loadComponents(), {
-      QRouteTab,
-      QTabs,
-      QSpinnerFacebook,
-      QSpinnerOval,
-      QBtn,
-      QFabAction,
-      QTooltip
-    }),
+    components: {
+      BzRouteTab,
+      TimeLen,
+      Oauth,
+      LinkBtn,
+      BzFab,
+      Login,
+      BzUploadFileMultiple,
+      BzUploadImgMultiple,
+      BzUploadImg,
+      BzUploadFile,
+      BzTitle
+    },
     computed: {},
     data: function() {
       return {
@@ -110,15 +110,8 @@
         img: ''
       }
     },
-    mounted: function() {
-      this.$nextTick(function() {
-        // code that assumes this.$el is in-document
-      })
-    },
     methods: {
       promiseExp: function() {
-        // throw new Error('test error bigzhu')
-
         return this.$store.dispatch('get', '/notExist').then(function(response) {
           throw new Error('promise error')
         })
