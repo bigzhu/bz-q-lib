@@ -1,8 +1,8 @@
 // store 的module
-import 'whatwg-fetch'
+// import 'whatwg-fetch'
 import _ from 'lodash'
 import checkLogin from './functions/checkLogin'
-import toast from './functions/toast'
+// import toast from './functions/toast'
 import axios from 'axios'
 
 var fetch
@@ -151,7 +151,8 @@ export const actions = {
         }
         return data
       }).catch(function(error) {
-        toast(error.message, 'warning')
+        console.log(error.message)
+        // toast(error.message, 'warning')
       })
   },
   post({
@@ -193,7 +194,8 @@ export const actions = {
         }
         return data
       }).catch(function(error) {
-        toast(error.message, 'warning')
+        console.log(error.message)
+        // toast(error.message, 'warning')
       })
   },
   delete({
@@ -224,7 +226,8 @@ export const actions = {
         }
         return data
       }).catch(function(error) {
-        toast(error.message, 'warning')
+        console.log(error.message)
+        // toast(error.message, 'warning')
       })
   },
   put({
@@ -265,7 +268,8 @@ export const actions = {
         }
         return data
       }).catch(function(error) {
-        toast(error.message, 'warning')
+        console.log(error.message)
+        // toast(error.message, 'warning')
       })
   },
   login({
