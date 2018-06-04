@@ -1,8 +1,8 @@
 {
-  "name": "lib",
+  "name": "bz-q-lib",
   "version": "1.0.0",
-  "description": "lib",
-  "productName": "lib",
+  "description": "bz-q-lib",
+  "productName": "bz-q-lib",
   "cordovaId": "org.cordova.quasar.app",
   "author": "bigzhu <vermiliondun@gmail.com>",
   "private": true,
