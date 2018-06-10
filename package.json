@@ -1,6 +1,6 @@
 {
   "name": "bz-q-lib",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "bz-q-lib",
   "productName": "bz-q-lib",
   "cordovaId": "org.cordova.quasar.app",
