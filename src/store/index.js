@@ -1,14 +1,13 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+// 公用库
+import state from './state'
+import * as getters from './getters'
+import * as mutations from './mutations'
+import * as actions from './actions'
 
-import example from './module-example'
-
-Vue.use(Vuex)
-
-const store = new Vuex.Store({
-  modules: {
-    example
-  }
-})
-
-export default store
+export default {
+  namespaced: true,
+  state,
+  getters,
+  mutations,
+  actions
+}

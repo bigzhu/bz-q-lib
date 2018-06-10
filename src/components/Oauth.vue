@@ -7,10 +7,6 @@
 </template>
 
 <script>
-  import {
-    QSpinnerFacebook
-  } from 'quasar'
-  import 'quasar-extras/fontawesome'
   import LinkBtn from './LinkBtn'
   export default {
     props: {
@@ -35,7 +31,6 @@
       }
     },
     components: {
-      QSpinnerFacebook,
       LinkBtn
     },
     computed: {},
