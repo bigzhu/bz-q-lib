@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { Notify } from 'quasar'
 export const get = (url, params) => {
   return axios.get(url, {
       params: params
@@ -8,6 +9,7 @@ export const get = (url, params) => {
     })
     .catch((error) => {
       console.log(error)
+      Notify.create(error.response.data.error)
     })
 }
 export const del = (url, params) => {
@@ -19,6 +21,7 @@ export const del = (url, params) => {
     })
     .catch((error) => {
       console.log(error)
+      Notify.create(error.response.data.error)
     })
 }
 export const post = (url, params) => {
@@ -28,6 +31,7 @@ export const post = (url, params) => {
     })
     .catch((error) => {
       console.log(error)
+      Notify.create(error.response.data.error)
     })
 }
 export const put = (url, params) => {
@@ -37,5 +41,6 @@ export const put = (url, params) => {
     })
     .catch((error) => {
       console.log(error)
+      Notify.create(error.response.data.error)
     })
 }
