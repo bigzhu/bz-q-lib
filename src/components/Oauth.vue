@@ -27,7 +27,7 @@ export default {
           },
           {
             type: 'google',
-            url: '/fuck/api_twitter'
+            url: '/playAPI/Google'
           },
           {
             type: 'qq'
@@ -63,10 +63,8 @@ export default {
       if (this.run) {
         return 'javascript:void(0);'
       }
-      if (this.url) {
-        let url = this.url + '/api_' + oauth.type
-        if (oauth.type === 'qq') url += '_login'
-        return url
+      if (oauth.url) {
+        return oauth.url
       } else {
         let url = '/api_' + oauth.type
         if (oauth.type === 'qq') url += '_login'
