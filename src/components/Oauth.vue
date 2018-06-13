@@ -76,14 +76,14 @@ export default {
 </script>
 
 <style lang="stylus">
-  .bg-google
+  .bg-google.q-btn
     background-color #DD4B39
-  .bg-qq
+  .bg-qq.q-btn
     background-color #44badc
-  .bg-facebook
+  .bg-facebook.q-btn
     background-color #3b5998
-  .bg-twitter
+  .bg-twitter.q-btn
     background-color #00b2ff
-  .bg-github
+  .bg-github.q-btn
     background-color #2b3137
 </style>
