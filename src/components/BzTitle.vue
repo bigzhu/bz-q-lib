@@ -1,29 +1,33 @@
 <template>
+<div>
+  <br>
   <q-alert color="secondary" icon='settings_input_component'>
     <slot/>
   </q-alert>
+  <br>
+</div>
 </template>
 
 <script>
-  import {
+import {
+  QAlert
+} from 'quasar'
+export default {
+  props: [],
+  components: {
     QAlert
-  } from 'quasar'
-  export default {
-    props: [],
-    components: {
-      QAlert
-    },
-    computed: {},
-    data: function() {
-      return {}
-    },
-    mounted: function() {
-      this.$nextTick(function() {
-        // code that assumes this.$el is in-document
-      })
-    },
-    methods: {}
-  }
+  },
+  computed: {},
+  data: function () {
+    return {}
+  },
+  mounted: function () {
+    this.$nextTick(function () {
+      // code that assumes this.$el is in-document
+    })
+  },
+  methods: {}
+}
 </script>
 
 <style lang="stylus" scoped>
