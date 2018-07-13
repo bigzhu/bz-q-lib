@@ -4,6 +4,7 @@
 </template>
 
 <script>
+  import checkWsPro from '../functions/checkWsPro'// 用这个来确定加密协议
   export default {
     props: {
       // ws 的 url 路径
@@ -15,10 +16,6 @@
       the_key: {
         type: String,
         required: true
-      },
-      // 加密的则是 wss
-      pro: {
-        default: 'ws'
       }
     },
     watch: {
@@ -38,7 +35,7 @@
     },
     methods: {
       initSocket: function () {
-        let url = this.pro + '://' + window.location.hostname + ':' + window.location.port + this.path
+        let url = checkWsPro() + '://' + window.location.hostname + ':' + window.location.port + this.path
         this.web_socket = new window.WebSocket(url)
         this.web_socket.onopen = this.register
         this.web_socket.onclose = this.onClose
