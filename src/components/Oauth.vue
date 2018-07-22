@@ -1,6 +1,6 @@
 <template>
 <div>
-  <LinkBtn loader v-for="o in oauths" :key="o.type" :href="getHref(o)" :icon="'fab fa-'+o.type" :color="o.type" :no-caps="true">
+  <LinkBtn loader v-for="o in oauths" :key="o.type" :href="getHref(o)" :icon="'ion-logo-'+o.type" :color="o.type" :no-caps="true">
     <q-spinner-facebook slot="loading" /> {{getName(o)}}
   </LinkBtn>
 </div>
