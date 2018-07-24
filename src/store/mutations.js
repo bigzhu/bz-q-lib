@@ -15,6 +15,6 @@ export const loading = (state, loading) => {
     state.loading = false
   }
 }
-export const SET_OAUTH_INFO = (state, oauth_info) => {
-  state.oauth_info = oauth_info
+export const oauth_info = (state, data) => {
+  state.oauth_info = data
 }

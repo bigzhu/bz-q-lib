@@ -1,20 +1,21 @@
-import axios from 'axios'
-/*
-export const someAction = (state) => {
-}
-*/
+import {
+  // del,
+  post,
+  // put,
+  get
+} from 'bz-q-lib/src/functions/http'
 
 export const getOauthInfo = ({
   state,
   commit,
   dispatch
 }) => {
-  axios.get('/APIUserInfo')
-    .then(function(response) {
-      commit('SET_OAUTH_INFO', response.data)
-      return response.data
-    })
+  return get('/api/OauthInfo').then((data) => {
+    commit('oauth_info', data)
+    return data
+  })
 }
+
 export const login = ({
   state,
   commit,
@@ -26,8 +27,5 @@ export const login = ({
   let params = {}
   params.user_name = user_name
   params.password = password
-  return axios.post('/APILogin', params)
-    .then(function(response) {
-      return response.data
-    })
+  return post('/api/Login', params)
 }
