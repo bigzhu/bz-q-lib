@@ -11,7 +11,10 @@ export const getOauthInfo = ({
   dispatch
 }) => {
   return get('/api/OauthInfo').then((data) => {
-    commit('oauth_info', data)
+    // 出错时候依然会执行 then. 这里不能覆盖 oauth_info 为 undefined
+    if (data) {
+      commit('oauth_info', data)
+    }
     return data
   })
 }
