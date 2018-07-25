@@ -3,7 +3,7 @@ import {
   post,
   // put,
   get
-} from 'bz-q-lib/src/functions/http'
+} from '../../functions/http'
 
 export const getOauthInfo = ({
   state,

@@ -1,6 +1,22 @@
 <template>
 <div class="layout-padding relative-position">
   <BzTitle>
+    显示 OauthInfo 头像
+  </BzTitle>
+  <OauthInfo>
+    <q-popover>
+      <q-list item-separator link>
+        <q-item @click.native="$router.push('/UserSet')">
+          {{ $t("设置") }}
+        </q-item>
+        <q-item @click.native="logout">
+          {{ $t("退出") }}
+        </q-item>
+      </q-list>
+    </q-popover>
+  </OauthInfo>
+
+  <BzTitle>
     BzWebSocket 向服务器注册 WebSocket
   </BzTitle>
   <BzWebSocket @on_message="socketCallback" path="/ws" the_key="test" />
@@ -93,7 +109,6 @@
 </template>
 
 <script>
-// import loadComponents from '../functions/loadComponents'
 import BzWebSocket from './BzWebSocket'
 import BzCountUp from './BzCountUp'
 import BzRouteTab from './BzRouteTab'
@@ -107,9 +122,11 @@ import BzUploadImgMultiple from './BzUploadImgMultiple'
 import BzUploadImg from './BzUploadImg'
 import BzUploadFile from './BzUploadFile'
 import BzTitle from './BzTitle'
+import OauthInfo from './OauthInfo'
 export default {
   props: [],
   components: {
+    OauthInfo,
     BzWebSocket,
     BzCountUp,
     BzRouteTab,

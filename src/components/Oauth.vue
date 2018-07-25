@@ -27,7 +27,7 @@ export default {
           },
           {
             type: 'google',
-            url: '/playAPI/Google'
+            url: '/api/Google'
           },
           {
             type: 'qq'
