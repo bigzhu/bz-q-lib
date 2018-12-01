@@ -10,7 +10,7 @@ export const getOauthInfo = ({
   commit,
   dispatch
 }) => {
-  return get('/api/OauthInfo').then((data) => {
+  return get('/api/oauth_info').then((data) => {
     // 出错时候依然会执行 then. 这里不能覆盖 oauth_info 为 undefined
     if (data) {
       commit('oauth_info', data)
@@ -30,5 +30,5 @@ export const login = ({
   let params = {}
   params.user_name = user_name
   params.password = password
-  return post('/api/Login', params)
+  return post('/api/login', params)
 }
