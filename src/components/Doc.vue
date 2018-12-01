@@ -19,9 +19,10 @@
   <BzTitle>
     BzWebSocket 向服务器注册 WebSocket
   </BzTitle>
-  <BzWebSocket @on_message="socketCallback" path="/ws" the_key="test" />
-  <BzWebSocket @on_message="socketCallback" path="/ws" the_key="test2" />
-  <BzWebSocket @on_message="socketCallback" path="/ws" the_key="test3" />
+
+  <BzWebSocket @on_message="socketCallback" path="/api/ws" the_key="test" />
+  <BzWebSocket @on_message="socketCallback" path="/api/ws" the_key="test2" />
+  <BzWebSocket @on_message="socketCallback" path="/api/ws" the_key="test3" />
 
   <BzTitle>
     BzCountUp 递次增加的数字

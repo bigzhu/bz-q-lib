@@ -42,7 +42,7 @@
     },
     methods: {
       addNew: function (url, name) {
-        this.value.push({url, name})
+        this.value.push({ url, name })
         this.new_img = ''
       }
     }

@@ -36,14 +36,14 @@ module.exports = function (ctx) {
     },
     devServer: {
       proxy: {
-        '/api': {
-          target: 'http://127.0.0.1:3003',
-          changeOrigin: true
-        },
-        '/ws': {
+        '/api/ws': {
           target: 'ws://127.0.0.1:3003',
           changeOrigin: true,
           ws: true
+        },
+        '/api': {
+          target: 'http://127.0.0.1:3003',
+          changeOrigin: true
         }
       },
       // https: true,
