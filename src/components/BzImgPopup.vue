@@ -1,6 +1,6 @@
 <template>
   <div>
-    <a @click="hidePopup" href="javascript:;" class="image-popup-delete-btn" :style="{display:display_close_icon}">
+    <a @click="hidePopup" href="javascript:;" class="image-popup-delete-btn" :style="{display:displayCloseIcon}">
       <img src="../assets/delete-btn.svg">
     </a>
     <div class="ui basic modal image-popup">
@@ -17,13 +17,13 @@
     props: ['src'],
     components: {},
     computed: {
-      display_close_icon: function() {
-        return this.hide_close_icon ? 'none' : 'block'
+      displayCloseIcon: function() {
+        return this.isHideCloseIcon ? 'none' : 'block'
       }
     },
     data: function() {
       return {
-        hide_close_icon: true,
+        isHideCloseIcon: true,
         popup: null
       }
     },
@@ -56,10 +56,10 @@
         }
       },
       showCloseIcon: function() {
-        this.hide_close_icon = false
+        this.isHideCloseIcon = false
       },
       hideCloseIcon: function() {
-        this.hide_close_icon = true
+        this.isHideCloseIcon = true
       }
     }
   }

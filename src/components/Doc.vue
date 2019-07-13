@@ -20,9 +20,9 @@
     BzWebSocket 向服务器注册 WebSocket
   </BzTitle>
 
-  <BzWebSocket @on_message="socketCallback" path="/api/ws" the_key="test" />
-  <BzWebSocket @on_message="socketCallback" path="/api/ws" the_key="test2" />
-  <BzWebSocket @on_message="socketCallback" path="/api/ws" the_key="test3" />
+  <BzWebSocket @onMessage="socketCallback" path="/api/ws" theKey="test" />
+  <BzWebSocket @onMessage="socketCallback" path="/api/ws" theKey="test2" />
+  <BzWebSocket @onMessage="socketCallback" path="/api/ws" theKey="test3" />
 
   <BzTitle>
     BzCountUp 递次增加的数字
@@ -53,7 +53,7 @@
   <BzTitle>
     TimeLen 和当前的时间间隔
   </BzTitle>
-  <TimeLen date_time="2012/04/03 09:21:34" />
+  <TimeLen dateTime="2012/04/03 09:21:34" />
 
   <BzTitle>
     Oauth Oauth 按钮
@@ -86,19 +86,19 @@
   <BzTitle>
     BzUploadFileMultiple 上传多文件
   </BzTitle>
-  <BzUploadFileMultiple v-model="files" upload_url="/api/file/upload/" alt="测试">
+  <BzUploadFileMultiple v-model="files" uploadUrl="/api/file/upload/" alt="测试">
     <q-btn>上传</q-btn>
   </BzUploadFileMultiple>
 
   <BzTitle>
     BzUploadImgMultiple 上传图片多张
   </BzTitle>
-  <BzUploadImgMultiple v-model="imgs" upload_url="/api/file/upload/" alt="测试" />
+  <BzUploadImgMultiple v-model="imgs" uploadUrl="/api/file/upload/" alt="测试" />
 
   <BzTitle>
     BzUploadImg 上传图片
   </BzTitle>
-  <BzUploadImg v-model="img" alt="测试" upload_url="/api/file/upload/" />
+  <BzUploadImg v-model="img" alt="测试" uploadUrl="/api/file/upload/" />
 
   <BzTitle>
     BzUploadFile 上传文件
@@ -160,8 +160,8 @@ export default {
         throw new Error('promise error')
       })
     },
-    login: function (user_name, password) {
-      alert(`user_name: ${user_name} \npassword: ${password}`)
+    login: function (userName, password) {
+      alert(`userName: ${userName} \npassword: ${password}`)
     }
   }
 }

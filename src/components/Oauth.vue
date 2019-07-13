@@ -21,13 +21,13 @@ export default {
           },
           {
             type: 'twitter',
-            url: '/fuck/api_twitter'
+            url: '/fuck/apiTwitter'
             }, {
             type: 'facebook'
           },
           {
             type: 'google',
-            url: '/api/Google'
+            url: '/api/google'
           },
           {
             type: 'qq'

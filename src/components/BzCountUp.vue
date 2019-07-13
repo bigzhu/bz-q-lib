@@ -45,17 +45,17 @@
     },
     watch: {
       'end': function (val, oldVal) {
-        this.count_up.update(val)
+        this.countUp.update(val)
       }
     },
     mounted () {
-      this.count_up = new CountUp(this.$el, this.startValue,
+      this.countUp = new CountUp(this.$el, this.startValue,
         this.endValue,
         this.decimalValue,
         this.durationValue,
         this.options
       )
-      this.count_up.start()
+      this.countUp.start()
     }
   }
 </script>

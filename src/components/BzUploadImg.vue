@@ -3,15 +3,15 @@
     <div v-show="loading" class="ui large active loader">
       <div class="ui text loader">上传图片中</div>
     </div>
-    <upload-file :zip="zip" :upload_url="upload_url" @change_file="previewImg" accept="image/png, image/jpeg, image/gif" @upload_done="done" class="hidden">上传附件</upload-file>
+    <upload-file :zip="zip" :uploadUrl="uploadUrl" @changeFile="previewImg" accept="image/png, image/jpeg, image/gif" @uploadDone="done" class="hidden">上传附件</upload-file>
     <a @click="changeImg" href="javascript:void(0)" data-content="">
-      <img :src="value||blank_img||default_picture" class="responsive" :alt="alt" />
+      <img :src="value||blankImg||defaultPicture" class="responsive" :alt="alt" />
       <q-inner-loading :visible="loading" />
     </a>
 
     <a @click="deleteImg" :class="{'show-delete': value}" class="delete" href="javascript:;"><img src="../assets/delete.svg"></a>
     <!--
-    <BzImgPopup v-model="pop_img"></BzImgPopup>
+    <BzImgPopup v-model="popImg"></BzImgPopup>
     -->
   </div>
 </template>
@@ -22,16 +22,16 @@
   } from 'quasar'
   import UploadFile from './BzUploadFile'
   import BzImgPopup from './BzImgPopup'
-  import upload_picture from '../assets/upload-picture.svg'
+  import uploadPicture from '../assets/upload-picture.svg'
   export default {
     props: {
       zip: { // 是否压缩图片
         type: Boolean,
         default: true
       },
-      upload_url: {
+      uploadUrl: {
         type: String,
-        default: '/api_file_upload'
+        default: '/apiFileUpload'
       },
       value: {
         type: String,
@@ -41,7 +41,7 @@
         type: String,
         default: ''
       },
-      blank_img: {
+      blankImg: {
         type: String,
         default: ''
       }
@@ -53,17 +53,17 @@
     },
     data: function() {
       return {
-        pop_img: '',
-        default_picture: upload_picture,
+        popImg: '',
+        defaultPicture: uploadPicture,
         loading: false,
-        img_input: null,
-        pre_img: null
+        imgInput: null,
+        preImg: null
       }
     },
     mounted: function() {
       this.$nextTick(function() {
-        this.img_input = this.$el.getElementsByTagName('input')[0]
-        this.pre_img = this.$el.getElementsByClassName('.responsive')[0]
+        this.imgInput = this.$el.getElementsByTagName('input')[0]
+        this.preImg = this.$el.getElementsByClassName('.responsive')[0]
       })
     },
     methods: {
@@ -72,9 +72,9 @@
       },
       changeImg: function() {
         if (this.value) {
-          this.pop_img = this.value
+          this.popImg = this.value
         } else {
-          this.img_input.click()
+          this.imgInput.click()
         }
       },
       previewImg: function(e) {
@@ -86,7 +86,7 @@
       done: function(url, name) {
         this.loading = false
         this.$emit('input', url)
-        this.$emit('upload_done', url, name)
+        this.$emit('uploadDone', url, name)
       }
     },
     computed: {}

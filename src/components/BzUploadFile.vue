@@ -13,9 +13,9 @@
         type: Boolean,
         default: false
       },
-      upload_url: { // 上传的 url
+      uploadUrl: { // 上传的 url
         type: String,
-        default: '/api_file_upload'
+        default: '/apiFileUpload'
       },
       accept: { // 上传类型
         type: String,
@@ -25,22 +25,22 @@
     components: {},
     data: function() {
       return {
-        file_input: null
+        fileInput: null
       }
     },
     mounted: function() {
       this.$nextTick(function() {
-        this.file_input = this.$el.getElementsByTagName('input')[0]
+        this.fileInput = this.$el.getElementsByTagName('input')[0]
       })
     },
     methods: {
       changeFile: function(e) {
-        this.$emit('change_file', e)
+        this.$emit('changeFile', e)
         this.uploadFile()
       },
       fetchFile: function(fd) {
         let self = this
-        return fetch(this.upload_url, {
+        return fetch(this.uploadUrl, {
             method: 'post',
             body: fd
           })
@@ -57,8 +57,8 @@
               url = data.urls[0].url // 律品的返回格式, 只取 url
               name = data.urls[0].name
             }
-            if (data.file_path) url = data.file_path // 以前的返回格式
-            self.$emit('upload_done', url, name)
+            if (data.filePath) url = data.filePath // 以前的返回格式
+            self.$emit('uploadDone', url, name)
             return data
           })
         // .catch(function(error) {
@@ -68,7 +68,7 @@
       },
       uploadFile: function() {
         let self = this
-        let file = this.file_input.files[0]
+        let file = this.fileInput.files[0]
         if (file) {
           if (this.zip) {
             lrz(file)
@@ -91,7 +91,7 @@
         }
       },
       click: function() {
-        this.file_input.click()
+        this.fileInput.click()
       }
     },
     computed: {}

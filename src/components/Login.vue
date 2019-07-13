@@ -1,12 +1,12 @@
 <template>
   <div class="ui segment">
-    <q-field icon="account_circle" :error="!!user_name_error" :error-label="user_name_error">
-      <q-input v-model="user_name" @focus="cleanError" type="text" float-label="请输入邮箱/用户名" />
+    <q-field icon="accountCircle" :error="!!userNameError" :error-label="userNameError">
+      <q-input v-model="userName" @focus="cleanError" type="text" float-label="请输入邮箱/用户名" />
     </q-field>
-    <q-field icon="vpn_key" :error="!!password_error" :error-label="password_error">
+    <q-field icon="vpnKey" :error="!!passwordError" :error-label="passwordError">
       <q-input v-model="password" @keyup.enter="check" @focus="cleanError" type="password" float-label="请输入密码" />
     </q-field>
-    <q-btn @click="check" :color="button_color" class="full-width">登录</q-btn>
+    <q-btn @click="check" :color="buttonColor" class="full-width">登录</q-btn>
   </div>
 </template>
 
@@ -18,7 +18,7 @@
   } from 'quasar'
   export default {
     props: {
-      button_color: {
+      buttonColor: {
         type: String,
         default: 'primary'
       }
@@ -30,28 +30,28 @@
     },
     data: function() {
       return {
-        user_name: '',
-        user_name_error: '',
+        userName: '',
+        userNameError: '',
         password: '',
-        password_error: ''
+        passwordError: ''
       }
     },
     ready() {},
     methods: {
       check: function() {
-        if (!this.user_name) {
-          this.user_name_error = '必须输入用户名!'
+        if (!this.userName) {
+          this.userNameError = '必须输入用户名!'
           return
         }
         if (!this.password) {
-          this.password_error = '必须输入密码!'
+          this.passwordError = '必须输入密码!'
           return
         }
-        this.$emit('login', this.user_name, this.password)
+        this.$emit('login', this.userName, this.password)
       },
       cleanError: function() {
-        this.user_name_error = ''
-        this.password_error = ''
+        this.userNameError = ''
+        this.passwordError = ''
       }
     }
   }

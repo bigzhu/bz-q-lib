@@ -1,7 +1,7 @@
 <template>
   <div>
-    <BzUploadImg v-for="v in value" :key="v.url" :upload_url="upload_url" v-model="v.url" :alt="alt||v.name"/>
-    <BzUploadImg v-model="new_img"  :upload_url="upload_url" @upload_done="addNew"/>
+    <BzUploadImg v-for="v in value" :key="v.url" :uploadUrl="uploadUrl" v-model="v.url" :alt="alt||v.name"/>
+    <BzUploadImg v-model="newImg"  :uploadUrl="uploadUrl" @uploadDone="addNew"/>
   </div>
 </template>
 
@@ -20,9 +20,9 @@
       }
     },
     props: {
-      upload_url: {
+      uploadUrl: {
         type: String,
-        default: '/api_file_upload'
+        default: '/apiFileUpload'
       },
       value: {
         default: function () { return [] }
@@ -37,13 +37,13 @@
     },
     data: function () {
       return {
-        new_img: ''
+        newImg: ''
       }
     },
     methods: {
       addNew: function (url, name) {
         this.value.push({ url, name })
-        this.new_img = ''
+        this.newImg = ''
       }
     }
   }

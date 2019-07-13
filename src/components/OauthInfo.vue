@@ -1,7 +1,7 @@
 <template>
   <!-- 右上角的用户登录的头像 -->
   <q-btn flat>
-    <img :src="oauth_info.avatar_url" class="avatar" />
+    <img :src="oauthInfo.avatarURL" class="avatar" />
     <slot></slot>
   </q-btn>
 </template>
@@ -9,8 +9,8 @@
 <script>
   export default {
     computed: {
-      oauth_info() {
-        return this.$store.state.lib.oauth_info
+      oauthInfo() {
+        return this.$store.state.lib.oauthInfo
       }
     }
   }

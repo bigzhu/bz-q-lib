@@ -1,12 +1,12 @@
 <template>
-  <span>{{timeLen(new Date(date_time), lang)}}</span>
+  <span>{{timeLen(new Date(dateTime), lang)}}</span>
 </template>
 
 <script>
   import timeLen from '../functions/timeLen'
   export default {
     props: {
-      date_time: {
+      dateTime: {
         // type: Number,
         required: true,
         default: new Date().getTime()

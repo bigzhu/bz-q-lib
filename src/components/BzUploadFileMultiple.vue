@@ -7,7 +7,7 @@
       <q-item-side right icon="delete" class="cursor-pointer" @click="del(index)" />
     </q-item>
 
-    <BzUploadFile :upload_url="upload_url" @upload_done="addNew">
+    <BzUploadFile :uploadUrl="uploadUrl" @uploadDone="addNew">
       <slot></slot>
     </BzUploadFile>
   </div>
@@ -34,9 +34,9 @@
       }
     },
     props: {
-      upload_url: {
+      uploadUrl: {
         type: String,
-        default: '/api_file_upload'
+        default: '/apiFileUpload'
       },
       value: {
         default: function() {

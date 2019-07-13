@@ -10,10 +10,10 @@ export const getOauthInfo = ({
   commit,
   dispatch
 }) => {
-  return get('/api/oauth_info').then((data) => {
-    // 出错时候依然会执行 then. 这里不能覆盖 oauth_info 为 undefined
+  return get('/api/oauthInfo').then((data) => {
+    // 出错时候依然会执行 then. 这里不能覆盖 oauthInfo 为 undefined
     if (data) {
-      commit('oauth_info', data)
+      commit('oauthInfo', data)
     }
     return data
   })
@@ -24,11 +24,11 @@ export const login = ({
   commit,
   dispatch
 }, {
-  user_name,
+  userName,
   password
 }) => {
   let params = {}
-  params.user_name = user_name
+  params.userName = userName
   params.password = password
   return post('/api/login', params)
 }
