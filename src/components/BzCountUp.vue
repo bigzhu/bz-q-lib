@@ -4,8 +4,8 @@
 
 <script>
   import CountUp from 'countup.js'
-  export default{
-    data () {
+  export default {
+    data() {
       return {}
     },
     props: {
@@ -48,7 +48,7 @@
         this.countUp.update(val)
       }
     },
-    mounted () {
+    mounted() {
       this.countUp = new CountUp(this.$el, this.startValue,
         this.endValue,
         this.decimalValue,
