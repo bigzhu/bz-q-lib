@@ -21,7 +21,6 @@
     QInnerLoading
   } from 'quasar'
   import UploadFile from './BzUploadFile'
-  import BzImgPopup from './BzImgPopup'
   import uploadPicture from '../assets/upload-picture.svg'
   export default {
     props: {
@@ -48,7 +47,6 @@
     },
     components: {
       QInnerLoading,
-      BzImgPopup,
       UploadFile
     },
     data: function() {

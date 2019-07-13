@@ -2,8 +2,8 @@ import axios from 'axios'
 import { Notify } from 'quasar'
 export const get = (url, params) => {
   return axios.get(url, {
-      params: params
-    })
+    params: params
+  })
     .then((response) => {
       return response.data
     })
@@ -14,8 +14,8 @@ export const get = (url, params) => {
 }
 export const del = (url, params) => {
   return axios.delete(url, {
-      params: params
-    })
+    params: params
+  })
     .then((response) => {
       return response.data
     })

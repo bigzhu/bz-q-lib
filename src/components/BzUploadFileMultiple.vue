@@ -14,12 +14,6 @@
 </template>
 
 <script>
-  import {
-    QList,
-    QItem,
-    QItemSide,
-    QItemMain
-  } from 'quasar'
   import BzUploadFile from './BzUploadFile'
   export default {
     watch: {
@@ -45,10 +39,6 @@
       }
     },
     components: {
-      QList,
-      QItem,
-      QItemSide,
-      QItemMain,
       BzUploadFile
     },
     data: function() {

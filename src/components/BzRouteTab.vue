@@ -24,9 +24,11 @@
     },
     components: {},
     computed: {
+      /*
       active() {
         if (this.names.indexOf(this.$route.name) !== -1) return true
       }
+      */
     },
     data: function() {
       return {}
