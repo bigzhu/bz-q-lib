@@ -27,7 +27,7 @@
   <BzTitle>
     BzCountUp 递次增加的数字
   </BzTitle>
-  <BzCountUp :end="1000" :duration="2.5" :options="{useEasing : true,
+  <BzCountUp :end="1000" :options="{useEasing : true,
       useGrouping : true,
       separator : ',',
       decimal : '.',
