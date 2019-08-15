@@ -1,7 +1,7 @@
 <template>
   <!-- 右上角的用户登录的头像 -->
   <q-btn flat>
-    <img :src="oauthInfo.avatarURL" class="avatar" />
+    <img :src="oauthInfo.AvatarURL" class="avatar" />
     <slot></slot>
   </q-btn>
 </template>

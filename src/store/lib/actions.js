@@ -28,7 +28,7 @@ export const login = ({
   password
 }) => {
   let params = {}
-  params.userName = userName
-  params.password = password
+  params.UserName = userName
+  params.Password = password
   return post('/api/login', params)
 }
